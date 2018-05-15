@@ -1,0 +1,58 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Fluxbox)
+    [exec] (Thunar) {thunar} <>
+    [submenu] (Applications) {}
+        [exec] (Thunar) {thunar} <>
+        [exec] (gcalctool) {gcalctool} <>
+        [exec] (Terminator) {terminator} <>
+        [exec] (Chrome) {google-chrome}
+        [exec] (Skype) {skype} <>
+        [exec] (Spotify) {spotify} <>
+        [submenu] (Utilities) {}
+            [exec] (Magnify) {xmag} <>
+            [exec] (Mount Disk) {gnome-disk-image-mounter} <>
+            [exec] (X Window Snapshot) {xwd | xwud} <>
+            [exec] (Editres) {editres} <>
+            [exec] (Xclipboard) {xclipboard} <>
+            [exec] (Xfontsel) {xfontsel} <>
+            [exec] (xfprint4) {xfprint4} <>
+            [exec] (Xkill) {xkill} <>
+            [exec] (Xrefresh) {xrefresh} <>
+            [exec] (Hardware Xvidtune) {xvidtune} <>
+        [end]
+   [end]
+   [submenu] (Settings) {}
+        [submenu] (System) {}
+            [exec] (Unity Settings) {unity-control-center} <>
+            [exec] (Disks) {gnome-disks} <>
+            [exec] (Sound) {pavucontrol} <>
+        [end]
+        [submenu] (Language) {}
+            [exec] (Greek) {setxkbmap el} <>
+            [exec] (English) {setxkbmap us} <>
+        [end]
+   [end]
+   [submenu] (Screen) {}
+     [exec] (Lock Screen (XScreenSaver\)) {/usr/bin/xscreensaver-command -lock} <>
+     [exec] (Disable XScreenSaver) {/usr/bin/xscreensaver-command -exit} <>
+     [exec] (Enable XScreenSaver) {/usr/bin/xscreensaver} <>
+     [exec] (Reinitialize XScreenSaver) {/usr/bin/xscreensaver-command -restart} <>
+     [exec] (XScreenSaver Preferences) {/usr/bin/xscreensaver-command -prefs} <>
+   [end]
+   [submenu] (Help) {}
+      [exec] (Info) { x-terminal-emulator -T "Info" -e info} <>
+      [exec] (Xman) {xman} <>
+   [end]
+
+   [config] (Configuration)
+   [workspaces] (Workspaces)
+   [reconfig] (Reconfigure)
+   [restart] (Restart)
+   [exit] (Exit)
+
+[end]

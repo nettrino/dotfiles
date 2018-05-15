@@ -1,0 +1,135 @@
+style.name:	mikepo2
+style.author:	mikepo@ics.forth.gr
+style.date:	05/12/09
+style.credits:
+style.comments:
+
+background: 		                  fullscreen
+background.color: #000000
+background.colorTo: #000000
+
+menu.frame.font:		              dejavusans-8
+menu.title.font:		              dejavusans-8
+toolbar.clock.font:		            dejavusans-8
+toolbar.workspace.font:		        dejavusans-8:bold
+toolbar.iconbar.focused.font:	    dejavusans-8:bold
+toolbar.iconbar.unfocused.font:   dejavusans-8
+window.font:			                dejavusans-8
+
+toolbar.button.color:	#000000
+toolbar.button.colorTo:	#010103
+toolbar.button.picColor:	#888888
+toolbar.button:	Raised Bevel1 Solid Horizontal
+
+toolbar.button.pressed.color:	#000000
+toolbar.button.pressed.colorTo:	#717580
+toolbar.button.pressed:	Flat Solid Diagonal
+
+toolbar.clock.color:	#000000
+toolbar.clock.colorTo:	#010103
+toolbar.clock.textColor:	#ffffff
+toolbar.clock:	Raised Bevel1 Solid Horizontal
+
+toolbar.color:	#000000
+toolbar.colorTo:	#010103
+toolbar.textColor:	#000000
+toolbar.justify:	Center
+toolbar:	Raised Bevel2 Solid Vertical
+
+toolbar.label.color:	#000000
+toolbar.label.colorTo:	#010103
+toolbar.label.textColor:	#888888
+toolbar.label:	Raised Bevel1 Solid Horizontal
+
+toolbar.windowLabel.color:	#000000
+toolbar.windowLabel.colorTo:	#010103
+toolbar.windowLabel.textColor:	#ffffff
+toolbar.windowLabel:	Raised Bevel1 Solid Horizontal
+
+window.button.pressed.color:	#3f3f3f
+window.button.pressed.colorTo:	#010103
+window.button.pressed:	parentrelative
+
+window.button.focus.color:	#5e626d
+window.button.focus.colorTo:	#010103
+window.button.focus.picColor:	#7c808b
+window.button.focus:	parentrelative
+
+window.button.unfocus.color:	#5e626d
+window.button.unfocus.colorTo:	#010103
+window.button.unfocus.picColor:	#484c54
+window.button.unfocus:	parentrelative
+
+window.frame.focus.color:	#0000ff
+window.frame.focus.colorTo:	#000000
+window.frame.focus:	parentrelative
+
+window.frame.unfocus.color:	#5e626d
+window.frame.unfocus.colorTo:	#000000
+window.frame.unfocus:	parentrelative
+
+window.grip.focus.color:	#5e626d
+window.grip.focus.colorTo:	#010103
+window.grip.focus:	parentrelative
+
+window.grip.unfocus.color:	#5e626d
+window.grip.unfocus.colorTo:	#5e626d
+window.grip.unfocus:	parentrelative
+
+window.handle.focus.color:	#ff0000
+window.handle.focus.colorTo:	#5e626d
+window.handle.focus:	parentrelative
+
+window.handle.unfocus.color:	#5e626d
+window.handle.unfocus.colorTo:	#010103
+window.handle.unfocus:	parentrelative
+
+window.justify:	Left
+window.label.focus.color:	#00ff00
+window.label.focus.colorTo:	#010103
+window.label.focus.textColor:	#ffffff
+window.label.focus:	parentrelative
+
+window.label.unfocus.color:	#5e626d
+window.label.unfocus.colorTo:	#010103
+window.label.unfocus.textColor:	#4b4b4b
+window.label.unfocus:	parentrelative
+
+window.title.focus.color:	#2d2e29
+window.title.focus.colorTo:	#010103
+window.title.focus:	Raised Bevel1 Solid Vertical
+
+window.title.unfocus.color:	#2d2e29
+window.title.unfocus.colorTo:	#010103
+window.title.unfocus:	Raised Bevel1 Solid Vertical
+
+window.tab.label.unfocus.textColor:     white
+window.tab.label.focus.textColor:       white
+
+menu.frame.color:	#000000
+menu.frame.colorTo:	#363636
+menu.frame.textColor:	#888888
+menu.frame.justify:	Right
+menu.frame:	Flat Solid Diagonal
+
+menu.hilite.color:	#000000
+menu.hilite.colorTo:	#4c4c4c
+menu.hilite.textColor:	#ffffff
+menu.hilite:	Raised Bevel1 Solid CrossDiagonal
+
+menu.title.color:	#000000
+menu.title.colorTo:	#959595
+menu.title.textColor:	#ffffff
+menu.title.justify: Right
+menu.title:	Raised Bevel1 Solid CrossDiagonal
+
+borderColor:	#5e626d
+
+bevelWidth:	1
+handleWidth:	0
+borderWidth:	1
+frameWidth:	0
+
+menu.bullet:	Triangle
+menu.frame.disableColor:	#000000
+menu.bullet.position:	Right

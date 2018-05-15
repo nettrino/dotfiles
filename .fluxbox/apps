@@ -1,0 +1,42 @@
+[app] (name=fbrun)
+  [Position]	(CENTER)	{0 0}
+  [Layer]	{2}
+[end]
+[app] (name=gvim) (class=Gvim) (role=vim-10042-2587725909-1309464793)
+  [Position]	(UPPERLEFT)	{500 303}
+  [Close]	{yes}
+[end]
+[app] (name=wiftop) (class=XTerm)
+  [Head]	{2}
+  [Dimensions]	{800 400}
+  [Position]	(UPPERLEFT)	{0 685}
+  [Deco]	{NONE}
+  [Sticky]	{yes}
+[end]
+[app] (name=whtop) (class=XTerm)
+  [Head]	{2}
+  [Dimensions]	{800 240}
+  [Position]	(UPPERLEFT)	{0 450}
+  [Deco]	{NONE}
+  [Sticky]	{yes}
+[end]
+[app] (name=wmultitail) (class=XTerm)
+  [Head]	{2}
+  [Dimensions]	{800 190}
+  [Position]	(UPPERLEFT)	{0 275}
+  [Deco]	{NONE}
+  [Sticky]	{yes}
+[end]
+[app] (name=wnemulog) (class=XTerm)
+  [Head]	{2}
+  [Dimensions]	{800 190}
+  [Position]	(UPPERLEFT)	{0 0}
+  [Deco]	{NONE}
+  [Sticky]	{yes}
+[end]
+[app] (name=google-chrome) (class=Google-chrome)
+  [Head]	{2}
+  [Dimensions]	{1120 1080}
+  [Position]	(UPPERLEFT)	{799 0}
+  [Sticky]	{yes}
+[end]

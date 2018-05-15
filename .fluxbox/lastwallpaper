@@ -1,0 +1,7 @@
+$full $full|/home/mikepo/.fluxbox/backgrounds/20031204#3.jpg|style|:0.1
+$full $full|/home/nettrino/.fluxbox/backgrounds/20031204#3.jpg|style|:5.0
+$full $full|/home/nettrino/.fluxbox/backgrounds/20031204#3.jpg|style|:4.0
+$full $full|/home/nettrino/Pictures/Wallpapers/black1.jpg|style|:2.0
+$full $full|/home/nettrino/Pictures/Wallpapers/black1.jpg|style|:3.0
+fbsetroot|-foreground #000000 -background #000000 -solid #000000|style|:1.0
+fbsetroot|-foreground #000000 -background #000000 -solid #000000|style|:0.0

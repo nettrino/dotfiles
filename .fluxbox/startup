@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+#xmodmap "/home/mikepo/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+ssh-agent
+fbpager -w &
+
+#xautolock -time 20  -locker "xlock -mode blank" -secure &
+xautolock -locker slock -time 15 -secure &
+
+
+# Start the screensaver daemon
+xscreensaver -no-splash &
+
+# create the networking manager
+nm-applet &
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+exec fluxbox &
+# or if you want to keep a log:
+# exec fluxbox -log "/home/nettrino/.fluxbox/log"
+fbpid=$!
+
+sleep 1
+{
+    # Applications you want to run after fluxbox has started
+    # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN & AT THE END.
+    google-chrome &
+    skype &
+    slack &
+	volumeicon &
+    mate-power-manager &
+    touchpad-indicator &
+    bash ~/.screenlayout/laptop_left_bottom.sh
+} &
+
+wait $fbpid

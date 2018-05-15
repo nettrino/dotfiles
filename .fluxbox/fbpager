@@ -1,0 +1,4 @@
+fbpager.workspace.width: 60
+fbpager.workspace.height: 10
+fbpager.workspacesPerRow: 6
+fbpager.alpha: 80

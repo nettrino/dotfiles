@@ -1,0 +1,6 @@
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -sleection clipboard -o'
+alias grep='grep --color=always'
+alias gdb='gdb -q'
+alias vi='nvim'
+alias vim='nvim'
