@@ -1,53 +1,63 @@
---[[
-lvim is the global options object
+vim.opt.backup = false -- creates a backup file
+vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.colorcolumn = "99999" -- fixes indentline for now
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.fileencoding = "utf-8" -- the encoding written to a file
+vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+vim.opt.hlsearch = true -- highlight all matches on previous search pattern
+vim.opt.ignorecase = true -- ignore case in `search patterns
+vim.opt.mouse = "a" -- allow the mouse to be used in neovim
+vim.opt.pumheight = 10 -- pop up menu height
+vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showmatch = true -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showtabline = 2 -- always show tabs
+vim.opt.splitright = true -- open new pages on the right split when vsplitting
+vim.opt.smartcase = true -- smart case
+vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.splitright = true -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false -- creates a swapfile
+vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
+vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.title = true -- set the title of window to the value of the titlestring
+vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
+vim.opt.undofile = true -- enable persistent undo
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 300 -- faster completion
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = false -- set relative numbered lines
+vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
+vim.opt.wrap = false -- display lines as one long line
+vim.opt.spell = false
+vim.opt.spelllang = "en"
+vim.opt.scrolloff = 3 -- Start scrolling 8 lines before win. border
+vim.opt.colorcolumn = "80"
+vim.opt.history = 1000
+vim.opt.diffopt = "filler,iwhite" -- In diff mode, ignore whitespace,
 
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "onedarker" -- try onedarker for a non-black background
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = ","
 
--- default useful keymappings
 
--- ctr + o go to definition
--- ctr + i come back from definition
--- shift + k: show information about a class
-
--- USER-keymappings
-
--- save
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
--- previous tab shift-z
-lvim.keys.normal_mode["<S-z>"] = ":tabp<cr>"
--- next tab shift-x
-lvim.keys.normal_mode["<S-x>"] = ":tabn<cr>"
--- new tab
-lvim.keys.normal_mode["<C-n>"] = ":tabnew<cr>"
-
--- split windows
-lvim.keys.normal_mode["_"] = ":split<cr>"
-lvim.keys.normal_mode["|"] = ":vsplit<cr>"
-
--- splitm resize up/down/left/right with ctr+key
-lvim.keys.normal_mode["<C-k>"] = "2<C-w>-"
-lvim.keys.normal_mode["<C-j>"] = "2<C-w>+"
-lvim.keys.normal_mode["<C-h>"] = "2<C-w><"
-lvim.keys.normal_mode["<C-l>"] = "2<C-w>>"
-
-
-lvim.keys.normal_mode["<Leader>s"] = ":sort<cr>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -93,22 +103,22 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-}
+-- lvim.builtin.treesitter.ensure_installed = {
+--   "bash",
+--   "c",
+--   "javascript",
+--   "json",
+--   "lua",
+--   "python",
+--   "typescript",
+--   "tsx",
+--   "css",
+--   "rust",
+--   "java",
+--   "yaml",
+-- }
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ignore_install = { "haskell", "phpdoc" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
@@ -238,10 +248,12 @@ lvim.plugins = {
     "mbbill/undotree",
   },
   {
-    "heavenshell/vim-pydocstring",
-    run = "make install",
+    "flazz/vim-colorschemes",
+  },
+  {
+    'pixelneo/vim-python-docstring',
     config = function()
-      vim.cmd("g:pydocstring_formatter = 'numpy'")
+      vim.cmd("let g:python_style = 'numpy'")
     end,
   },
   {
@@ -299,6 +311,7 @@ lvim.plugins = {
           context_lines = 3,
         },
         max_ram = 32000,
+        job_timeout = 60000,
         format_on_save = true,
         search_path = {
           "/Users/nettrino/projects/codeql-home",
@@ -312,8 +325,9 @@ lvim.plugins = {
 
 -- Plugin Keymappings
 lvim.keys.normal_mode["<S-u>"] = ":UndotreeToggle<cr>"
+
+-- nvim-tree (check :help; nvim-tree-lua for mappings)
 lvim.keys.normal_mode["<C-g>"] = ":NvimTreeToggle<cr>"
-lvim.keys.normal_mode["<C-i>"] = "<Plug>(pydocstring)<cr>"
 
 
 
@@ -331,3 +345,55 @@ vim.api.nvim_create_autocmd("FileType", {
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
 })
+
+-- default useful keymappings
+
+-- ctr + o go to definition
+-- ctr + i come back from definition
+-- shift + k: show information about a class
+
+-- USER-keymappings
+
+-- save
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
+-- previous tab shift-z
+lvim.keys.normal_mode["<S-z>"] = ":tabp<cr>"
+-- next tab shift-x
+lvim.keys.normal_mode["<S-x>"] = ":tabn<cr>"
+-- new tab
+lvim.keys.normal_mode["<C-n>"] = ":tabnew<cr>"
+
+-- split windows
+lvim.keys.normal_mode["_"] = ":split<cr>"
+lvim.keys.normal_mode["|"] = ":vsplit<cr>"
+
+-- splitm resize up/down/left/right with ctr+key
+lvim.keys.normal_mode["<C-k>"] = "2<C-w>-"
+lvim.keys.normal_mode["<C-j>"] = "2<C-w>+"
+lvim.keys.normal_mode["<C-h>"] = "2<C-w><"
+lvim.keys.normal_mode["<C-l>"] = "2<C-w>>"
+
+-- sort
+lvim.keys.normal_mode["<Leader>s"] = ":sort<cr>yy"
+
+-- select all
+lvim.keys.normal_mode["<C-a>"] = "<esc>ggVG<CR>"
+
+-- clipboard
+vim.opt.clipboard = ""
+
+lvim.builtin.which_key.mappings.y = { '"+y', "Yank to clipboard" }
+lvim.builtin.which_key.mappings.p = { '"+p', "paste from clipboard" }
+lvim.builtin.which_key.mappings.P = { '"+P', "Paste from clipboard" }
+lvim.builtin.which_key.mappings.y = {
+  y = {
+    '"+yy', "Yank line to clipboard"
+  }
+}
+lvim.builtin.which_key.vmappings.y = {
+  '"+y', "Yank to clipboard"
+}
+lvim.builtin.which_key.vmappings.p = {
+  '"+p', "Paste from clipboard"
+}
