@@ -1,51 +1,58 @@
 vim.opt.backup = false -- creates a backup file
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "99999" -- fixes indentline for now
+vim.opt.colorcolumn = "80"
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.diffopt = "filler,iwhite" -- In diff mode, ignore whitespace,
+vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
 vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+vim.opt.formatoptions = "cqtr"
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+vim.opt.history = 1000
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in `search patterns
 vim.opt.mouse = "a" -- allow the mouse to be used in neovim
+vim.opt.number = true -- set numbered lines
+vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.pumheight = 10 -- pop up menu height
-vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+vim.opt.relativenumber = false -- set relative numbered lines
+vim.opt.scrolloff = 3 -- Start scrolling 8 lines before win. border
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.showmatch = true -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showtabline = 2 -- always show tabs
-vim.opt.splitright = true -- open new pages on the right split when vsplitting
+vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.spell = false
+vim.opt.spelllang = "en"
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.splitbelow = true -- open new pages on the bottom when splitting
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false -- creates a swapfile
+vim.opt.splitright = true -- open new pages on the right split when vsplitting
+vim.opt.swapfile = true -- creates a swapfile
+vim.opt.directory = os.getenv("HOME") .. "/.config/lvim/swap"
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
+vim.opt.undodir = os.getenv("HOME") .. "/.config/lvim/undo"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 300 -- faster completion
-vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 2 -- insert 2 spaces for a tab
-vim.opt.cursorline = true -- highlight the current line
-vim.opt.number = true -- set numbered lines
-vim.opt.relativenumber = false -- set relative numbered lines
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
 vim.opt.wrap = false -- display lines as one long line
-vim.opt.spell = false
-vim.opt.spelllang = "en"
-vim.opt.scrolloff = 3 -- Start scrolling 8 lines before win. border
-vim.opt.colorcolumn = "80"
-vim.opt.history = 1000
-vim.opt.diffopt = "filler,iwhite" -- In diff mode, ignore whitespace,
+vim.opt.writebackup = true -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+vim.opt.backupdir = os.getenv("HOME") .. "/.config/lvim/backup"
 
+-- don't try to format everything
+lvim.format_on_save = {
+  pattern = { "*.py", "*.yml", ".yaml", "*.json" },
+}
 
 -- general
 lvim.log.level = "warn"
@@ -145,6 +152,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 local pyright_opts = {} -- check the lspconfig documentation for a list of all possible options
 require("lvim.lsp.manager").setup("pyright", pyright_opts)
+-- npm i -g graphql graphql-language-service-cli graphql-language-service-server
+local graphql_lsp_opts = {
+  filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript" },
+}
+require("lvim.lsp.manager").setup("graphql", graphql_lsp_opts)
 
 local function codeql_on_attach_callback(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua show_diagnostics_details()<CR>", { silent = true; })
@@ -166,6 +178,7 @@ require("lvim.lsp.manager").setup("codeqlls", {
     search_path = {
       "~/projects/codeql-home",
       "~/projects/codeql-home/codeql-repo",
+      "~/.codeql/packages",
     };
   };
 })
@@ -198,7 +211,12 @@ formatters.setup {
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--print-with", "80" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "graphql", "css", "html", "yaml", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  },
+  {
+    command = "golines",
+    extra_args = { "--max-len", "80" },
+    filetypes = { "golang" },
   },
 }
 
@@ -207,8 +225,8 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { command = "flake8",
     filetypes = { "python" },
-    -- black handles lines
-    extra_args = { "--ignore", "E501" },
+    -- black handles lines and breaks
+    extra_args = { "--ignore", "E501,W503,D100,D101,D102,D103,D104,D105,D106,D107" },
   },
   {
     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -226,6 +244,8 @@ linters.setup {
 
 -- Additional Plugins
 lvim.plugins = {
+  { "lunarvim/colorschemes" },
+  { "folke/tokyonight.nvim" },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -246,9 +266,15 @@ lvim.plugins = {
   },
   {
     "mbbill/undotree",
+    config = function()
+      vim.cmd("let g:gundo_close_on_revert=1")
+    end,
   },
   {
     "flazz/vim-colorschemes",
+  },
+  {
+    "jparise/vim-graphql",
   },
   {
     'pixelneo/vim-python-docstring',
@@ -327,7 +353,21 @@ lvim.plugins = {
 lvim.keys.normal_mode["<S-u>"] = ":UndotreeToggle<cr>"
 
 -- nvim-tree (check :help; nvim-tree-lua for mappings)
+-- :help nvim-tree-setup
+require('nvim-tree').setup {
+  remove_keymaps = true,
+  open_on_tab = false,
+  update_cwd = false,
+  auto_reload_on_write = false,
+}
 lvim.keys.normal_mode["<C-g>"] = ":NvimTreeToggle<cr>"
+
+-- previous tab shift-z
+lvim.keys.normal_mode["<S-z>"] = ":bprev<cr>"
+-- next tab shift-x
+lvim.keys.normal_mode["<S-x>"] = ":bnext<cr>"
+-- new tab
+lvim.keys.normal_mode["<C-n>"] = ":tabnew<cr>"
 
 
 
@@ -356,13 +396,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- save
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
--- previous tab shift-z
-lvim.keys.normal_mode["<S-z>"] = ":tabp<cr>"
--- next tab shift-x
-lvim.keys.normal_mode["<S-x>"] = ":tabn<cr>"
--- new tab
-lvim.keys.normal_mode["<C-n>"] = ":tabnew<cr>"
 
 -- split windows
 lvim.keys.normal_mode["_"] = ":split<cr>"
