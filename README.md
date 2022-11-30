@@ -3,7 +3,7 @@
 ### Terminal configs
 
  -  Place alacritty config in `~/.config/alacritty/`
- -  Place wezterm config in `~/.config/wezterm/`
+ -  Place wezterm config in `~/.config/wezter/`
 
 ### Fixing fonts
 
