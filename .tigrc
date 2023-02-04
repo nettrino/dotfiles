@@ -1,0 +1,4 @@
+#https://raw.githubusercontent.com/cbertoldi/dotfiles/master/tigrc.symlink
+# general
+color   title-focus             242     156
+color   title-blur              242     156
