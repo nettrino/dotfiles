@@ -4,6 +4,7 @@
 
  -  Place alacritty config in `~/.config/alacritty/`
  -  Place wezterm config in `~/.config/wezter/`
+ -  Place ghostty config in `~/.config/ghostty/` (`cp ghostty/config ~/.config/ghostty/config`)
 
 ### Fixing fonts
 
