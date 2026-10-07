@@ -13,7 +13,9 @@ disable_hotkey() {
 disable_hotkey 32 126  # Mission Control      Ctrl+Up
 disable_hotkey 33 125  # Application windows  Ctrl+Down
 disable_hotkey 79 123  # Move left a space    Ctrl+Left
+disable_hotkey 80 123  # Move left a space    (paired entry)
 disable_hotkey 81 124  # Move right a space   Ctrl+Right
+disable_hotkey 82 124  # Move right a space   (paired entry)
 
 # apply without logout
 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
